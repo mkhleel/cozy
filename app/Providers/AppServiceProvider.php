@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Http\ViewComposers\MetaViewComposer;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        View::composer('admin.layouts.app', MetaViewComposer::class);
     }
 
     /**
@@ -23,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Model::preventLazyLoading(! app()->isProduction());
     }
 }
