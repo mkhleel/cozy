@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/system', function () {
-    return view('admin.home');
-});
 Route::get('/test', function () {
     dd(gravatar('m5lil'));
 });
